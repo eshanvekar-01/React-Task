@@ -38,7 +38,7 @@ const MainPage = () => {
         return () => {
             console.log('CLEANUP!');
         };
-    }, [searchData]);
+    }, [searchData, data]);
 
     function HandleSearch(e){
         setSearchData(e.target.value);
@@ -52,22 +52,6 @@ const MainPage = () => {
         console.log(id);
         const filterOnDelete = filtered.filter( deleteUser => deleteUser.id !== id);
         setFiltered(filterOnDelete);
-    }
-
-    const handleEdit = (id) => {
-        console.log(id);
-        // const updateUser = filtered.map(
-        //     user => {
-        //         if(user.id === id){
-        //             console.log(user);
-                    
-        //             return user;
-        //         }
-        //         return user;
-        //     }
-        // )
-        // console.log(updateUser);
-        // setFiltered(updateUser);
     }
     
     const pageCount = Math.ceil(filtered.length / postsPerPage);
@@ -89,7 +73,7 @@ const MainPage = () => {
                 <Grid.Row>
                     <Grid.Column width={2}></Grid.Column>
                     <Grid.Column width={12}>
-                    <TableDisplay allusers={filtered} currentPage={currentPage} handleDelete={handleDelete} handleEdit={handleEdit} />                      
+                    <TableDisplay allusers={filtered} currentPage={currentPage} handleDelete={handleDelete} />                      
                     </Grid.Column>
                     <Grid.Column width={2}></Grid.Column>
                 </Grid.Row>

@@ -1,33 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Table, Checkbox, Grid  } from 'semantic-ui-react';
 
-const TableDisplay = ({ allusers, currentPage, handleDelete, handleEdit}) => {
+const TableDisplay = ({ allusers, currentPage, handleDelete }) => {
 
-    const [isCheckedAll, setIsCheckedAll] = useState(false);
     const [postsPerPage, setPostsPerPage] = useState(10);
-    
-    
-
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // const [currentPosts, setcurrentPosts] = useState(allusers.slice(indexOfFirstPost, indexOfLastPost));
     const currentPosts = allusers.slice(indexOfFirstPost, indexOfLastPost);
-    // const handleCheckboxChange = (e) => {
-    //     // const{ name, checked } = e.target;
-    //     // if(name === "allselect"){
-    //     //     let tempUser = currentPosts.map(user => {
-    //     //         return {...user, isChecked: checked}
-    //     //     });
-    //     //         setcurrentPosts(tempUser);   
-    //     // }else{
-    //     //     let tempUser = currentPosts.map((user) => 
-    //     //     user.name === name ? { ...user, isChecked : checked } : user);
-    //     //     setcurrentPosts(tempUser);
-    //     // }
 
-    // }
     return (       
         <Table responsive selectable basic='very'>
             <Table.Header>
@@ -47,15 +29,13 @@ const TableDisplay = ({ allusers, currentPage, handleDelete, handleEdit}) => {
                 {currentPosts.map( (user) => (
                     <Table.Row>
                     <Table.Cell>
-                        <Checkbox                        
-                        name={user.name}                        
-                        />
+                        <Checkbox/>
                     </Table.Cell>
                     <Table.Cell>{user.name}</Table.Cell>
                     <Table.Cell>{user.email}</Table.Cell>
                     <Table.Cell>{user.role}</Table.Cell>
                     <Table.Cell>
-                        <button onClick={() => handleEdit(user.id)}>
+                        <button>
                         <i class="edit outline icon"></i>
                         </button>
                     
@@ -64,11 +44,8 @@ const TableDisplay = ({ allusers, currentPage, handleDelete, handleEdit}) => {
                         </button>
                     </Table.Cell>
                 </Table.Row>
-                ))}          
-                    
-                
-            </Table.Body>
-                                
+                ))}
+            </Table.Body>                                
         </Table>      
     );
 }
