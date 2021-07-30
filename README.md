@@ -1,1 +1,1 @@
-(./Task_Screenshot)
+(./Task_Screenshot.jpg)
